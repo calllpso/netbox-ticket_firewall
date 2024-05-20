@@ -1,0 +1,19 @@
+{% extends 'generic/object.html' %}
+{% load buttons %}
+{% load helpers %}
+{% load plugins %}
+{% load render_table from django_tables2 %}
+
+
+
+{% block content %}
+    {% include 'inc/table_controls_htmx.html' %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body" id="object_list">
+                {% include 'htmx/table.html' %}
+            </div>
+        </div>
+    </form>
+{% endblock content %}

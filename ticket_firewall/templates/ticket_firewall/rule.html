@@ -1,0 +1,134 @@
+{% extends 'generic/object.html' %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Access List Rule</h5>
+        <div class="card-body">
+          
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Ticket ID</th>
+              <td>
+                <a href="{{ object.ticket_id.get_absolute_url }}">{{ object.ticket_id }}</a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Index</th>
+              <td>{{ object.index }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{{ object.description|placeholder }}</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+      {% include 'inc/panels/tags.html' %}
+    </div>
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Details</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">device</th>
+              <td>
+                {% if device %}
+                {% for i in device %}
+                  <a href="{{ i.get_absolute_url }}">{{ i.name }}</a>
+                {% endfor %}  
+
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}
+              </td>
+            </tr>
+
+          
+            <tr>
+              <th scope="row">Source Prefix</th>
+              <td>
+                  {% for i in source_prefix %}
+                    <a href="{{ i.get_absolute_url }}">{{ i }}</a>
+                  {% endfor %}  
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Source Address</th>
+              <td>
+                  {% for i in source_address %}
+                    <a href="{{ i.get_absolute_url }}">{{ i }}</a>
+                  {% endfor %}  
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Source Ports</th>
+              <td>{{ object.source_ports }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Destination Prefix</th>
+              <td>
+                {% for i in destination_prefix %}
+                <a href="{{ i.get_absolute_url }}">{{ i }}</a>
+                {% endfor %}  
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Destination Address</th>
+              <td>
+                {% for i in destination_address %}
+                <a href="{{ i.get_absolute_url }}">{{ i }}</a>
+                {% endfor %}  
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Destination Ports</th>
+              <td>{{ object.destination_ports|split:", "|placeholder}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Protocols</th>
+              <td>
+                {% for i in protocols %}
+                  {{i.name }}
+                {% endfor %}  
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Action</th>
+              <td>{{ object.get_action_display }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Opened date</th>
+              <td>
+                {% if object.opened %}
+                  {{ object.opened }}
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Closed date</th>
+              <td>
+                {% if object.closed %}
+                  {{ object.closed }}
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}
+              </td>
+            </tr>
+
+          
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}

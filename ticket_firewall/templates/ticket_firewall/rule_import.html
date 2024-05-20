@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %}
+
+
+{% block content %}
+<center> <h5>Required CSV Fields </h5></center>
+<center></center><h5>ticket_id;source_prefix;source_address;source_ports;destination_prefix;destination_address;destination_ports;protocols;action;opening_date;closing_date</h5></center>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile" />
+    <input type="submit" name="submit" value="Upload" />
+</form>
+<br>
+
+{% if resp %}
+<h5>Response</h5>
+<h5><pre> {{resp | pprint}} </pre> </h5>
+{% endif %}
+
+{% if debug_info %}
+deb: {{debug_info}}
+{% endif %}
+
+{% endblock %}

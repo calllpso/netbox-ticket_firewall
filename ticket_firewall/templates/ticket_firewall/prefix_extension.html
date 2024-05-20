@@ -1,0 +1,42 @@
+<div class="card">
+
+    <h5 class="card-header">
+        Rules
+    </h5>
+    <h6 class="card-header">
+        Source Prefix
+    </h6>
+    <div class="card-body">
+        <table class="table table-hover panel-body attr-table">
+            <tr>
+                <td> Rule Index </td>
+                <td> Ticket Name</td>
+            </tr>
+            {% for rule in source_prefix_rules %}
+            <tr>
+                <td > <a href="{{ rule.get_absolute_url }}"> {{rule.index}} </a> </td>
+                <td> <a href="{{ rule.ticket_id.get_absolute_url }}"> {{rule.ticket_id.ticket_name}} </a> </td>
+            </tr>
+            {% endfor %}
+        </table>        
+    </div>
+
+    <h6 class="card-header">
+        Destination Prefix
+    </h6>
+    <div class="card-body">
+        <table class="table table-hover panel-body attr-table">
+            <tr>
+                <td> Rule Index </td>
+                <td> Ticket Name</td>
+            </tr>
+            {% for rule in destination_prefix_rules %}
+            <tr>
+                <td > <a href="{{ rule.get_absolute_url }}"> {{rule.index}} </a> </td>
+                <td> <a href="{{ rule.ticket_id.get_absolute_url }}"> {{rule.ticket_id.ticket_name}} </a> </td>
+            </tr>
+            {% endfor %}
+        </table>        
+    </div>
+
+</div>
