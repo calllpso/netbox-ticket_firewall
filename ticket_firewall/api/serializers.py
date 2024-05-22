@@ -31,9 +31,6 @@ class AttachFileSerializer(NetBoxModelSerializer):
             '__all__'
         )
 class ProtocolSerializer(NetBoxModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='plugins-api:ticket_firewall-api:protocol-detail'
-    )
     class Meta:
         model = Protocol
         fields = [

@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='ticket_firewall',
-    version='1.2.0',
+    version='1.2.1',
     description='Netbox Ticket Firewall plugin',
     install_requires=[
         "pandas", 
