@@ -11,7 +11,7 @@ class NestedTicketSerializer(WritableNestedSerializer):
     )
     class Meta:
         model = Ticket
-        fields = ('__all__')
+        fields = ['url', 'ticket_name']
 
 class TicketSerializer(NetBoxModelSerializer):
     url = serializers.HyperlinkedIdentityField(
@@ -20,22 +20,16 @@ class TicketSerializer(NetBoxModelSerializer):
     rule_count = serializers.IntegerField(read_only=True)
     class Meta:
         model = Ticket
-        fields = (
-            '__all__'
-        )
+        fields = ['url', 'rule_count', 'ticket_name']
 class AttachFileSerializer(NetBoxModelSerializer):
     ticket_id = NestedTicketSerializer()
     class Meta:
         model = AttachFile
-        fields = (
-            '__all__'
-        )
+        fields = ['name', 'ticket_id']
 class ProtocolSerializer(NetBoxModelSerializer):
     class Meta:
         model = Protocol
-        fields = [
-            'name'
-        ]
+        fields = ['name']
 
 class RuleSerializer(NetBoxModelSerializer):
     url = serializers.HyperlinkedIdentityField(
@@ -53,6 +47,4 @@ class RuleSerializer(NetBoxModelSerializer):
     
     class Meta:
         model = Rule 
-        fields = (
-            '__all__'
-        )
+        fields = ['url', 'ticket_id', 'protocols', 'source_prefix', 'source_address', 'source_address', 'destination_prefix', 'destination_address', 'device']
