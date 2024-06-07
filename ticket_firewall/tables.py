@@ -24,7 +24,7 @@ class RuleTable(NetBoxTable):
     destination_prefix = tables.ManyToManyColumn(linkify_item =True)
     destination_address = tables.ManyToManyColumn(linkify_item =True)
     
-    device = tables.ManyToManyColumn(linkify_item =True)
+    firewall = tables.ManyToManyColumn(linkify_item =True)
 
     ### цвет
     action = ChoiceFieldColumn()
@@ -35,11 +35,11 @@ class RuleTable(NetBoxTable):
             'pk', 'id', 'ticket_id', 'index', 
             'source_prefix', 'source_address', 'source_ports',
             'destination_prefix', 'destination_address', 'destination_ports', 
-            'protocols', 'action', 'device', 'description', 'opened', 'closed', 
+            'protocols', 'action', 'firewall', 'description', 'opened', 'closed', 
         )
         default_columns = (
             'ticket_id', 'index', 
             'source_prefix', 'source_address', 'source_ports',
             'destination_prefix', 'destination_address', 'destination_ports', 
-            'protocols', 'action', 'device', 'opened', 'closed', 
+            'protocols', 'action', 'firewall', 'opened', 'closed', 
         )

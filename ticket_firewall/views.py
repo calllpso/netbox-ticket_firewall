@@ -66,14 +66,14 @@ class RuleView(generic.ObjectView):
         source_address = instance.source_address.all()
         destination_prefix = instance.destination_prefix.all()
         destination_address = instance.destination_address.all()
-        device = instance.device.all()
+        firewall = instance.firewall.all()
         return {
             'protocols': protocols,
             'source_prefix': source_prefix,
             'source_address': source_address,
             'destination_prefix': destination_prefix,
             'destination_address': destination_address,
-            'device': device
+            'firewall': firewall
         }
     
 

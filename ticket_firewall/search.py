@@ -24,7 +24,7 @@ class RuleIndex(SearchIndex):
         ('destination_ports'  , 100), 
         ('protocols'           , 100), 
         ('action'             , 100), 
-        ('device'             , 100), 
+        ('firewall'             , 100), 
         ('description'        , 100), 
         ('opened'             , 100), 
         ('closed'             , 100), 

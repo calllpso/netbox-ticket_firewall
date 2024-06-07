@@ -42,9 +42,9 @@ class RuleSerializer(NetBoxModelSerializer):
     source_address = IPAddressSerializer(many=True, read_only=True, nested=True)
     destination_prefix = PrefixSerializer(many=True, read_only=True, nested=True)
     destination_address = IPAddressSerializer(many=True, read_only=True, nested=True)
-    device = DeviceSerializer(many=True, read_only=True, nested=True)
+    firewall = DeviceSerializer(many=True, read_only=True, nested=True)
     
     
     class Meta:
         model = Rule 
-        fields = ['url', 'ticket_id', 'protocols', 'source_prefix', 'source_address', 'source_address', 'destination_prefix', 'destination_address', 'device']
+        fields = ['url', 'ticket_id', 'protocols', 'source_prefix', 'source_address', 'source_address', 'destination_prefix', 'destination_address', 'firewall']

@@ -79,7 +79,7 @@ class RuleFormEdit(NetBoxModelForm):
         required=False
     )
 
-    device = DynamicModelMultipleChoiceField(
+    firewall = DynamicModelMultipleChoiceField(
         queryset = Device.objects.all(),
         required=False,
         selector = True
@@ -89,7 +89,7 @@ class RuleFormEdit(NetBoxModelForm):
     class Meta:
         model = Rule
         fields = (
-            'ticket_id', 'index', 'device',
+            'ticket_id', 'index', 'firewall',
             'source_prefix', 'source_address', 'source_ports',  
             'destination_prefix', 'destination_address', 'destination_ports', 
             'protocols', 'action', 'opened', 'closed',  'description', 'tags',  
@@ -130,7 +130,7 @@ class RuleFormCreate(NetBoxModelForm):
         required=False
     )
              
-    device = DynamicModelMultipleChoiceField(
+    firewall = DynamicModelMultipleChoiceField(
         queryset = Device.objects.all(),
         required=False,
         selector = True
@@ -142,7 +142,7 @@ class RuleFormCreate(NetBoxModelForm):
             'ticket_id', 'index', 
             'source_prefix', 'source_address', 'source_ports',  
             'destination_prefix', 'destination_address', 'destination_ports', 
-            'protocols', 'action', 'device', 'opened', 'closed', 'description', 'tags',  
+            'protocols', 'action', 'firewall', 'opened', 'closed', 'description', 'tags',  
         )
         widgets = {
             'opened': DatePicker(),
@@ -222,7 +222,7 @@ class RuleFilterForm(NetBoxModelFilterSetForm):
         required=False
     )
 
-    device = DynamicModelMultipleChoiceField(
+    firewall = DynamicModelMultipleChoiceField(
         queryset = Device.objects.all(),
         required=False
     )
@@ -275,7 +275,7 @@ class RuleCSVForm(NetBoxModelImportForm):
         fields = ('ticket_id', 'index', 
             'source_prefix', 'source_address', 'source_ports',  
             'destination_prefix', 'destination_address', 'destination_ports', 
-            'protocols', 'action', 'device',  'opened', 'closed', 'description', 'tags',)
+            'protocols', 'action', 'firewall',  'opened', 'closed', 'description', 'tags',)
             
     def __init__(self, data=None, *args, **kwargs):
         super().__init__(data, *args, **kwargs)

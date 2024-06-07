@@ -135,7 +135,7 @@ class Rule(NetBoxModel):
     destination_prefix = models.ManyToManyField(Prefix, blank=True, related_name="+")
     destination_address = models.ManyToManyField(IPAddress, blank=True, related_name="+")
     protocols = models.ManyToManyField(Protocol, blank=True, related_name="+" )
-    device = models.ManyToManyField(Device, blank=True, related_name="+",)
+    firewall = models.ManyToManyField(Device, blank=True, related_name="+",)
 
     destination_ports = models.CharField(
         max_length=100,
@@ -155,7 +155,7 @@ class Rule(NetBoxModel):
 
 
     clone_fields = (
-        'ticket_id', 'source_ports', 'destination_ports', 'protocols', 'action', 'description', 'opened', 'closed','source_prefix', 'destination_prefix', 'device'
+        'ticket_id', 'source_ports', 'destination_ports', 'protocols', 'action', 'description', 'opened', 'closed','source_prefix', 'destination_prefix', 'firewall'
     )
 
     class Meta:

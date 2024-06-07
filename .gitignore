@@ -17,3 +17,5 @@ __pycache__
 .gitlab-ci.yml
 build
 *.egg-info
+ticket_firewall/migrations/*
+!migrations/__init__.py
